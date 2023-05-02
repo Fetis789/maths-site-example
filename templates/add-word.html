@@ -1,0 +1,31 @@
+﻿{% extends "new_base.html" %}
+
+{% block header %}
+Добавление слова в таблицу
+{% endblock %}
+
+{% block page_info %}
+В данной форме вы можете добавить слово в таблицу слов с переводом.<br/>
+Заполните форму и нажмите на кнопку "Добавить слово", чтобы добавить слово в таблицу.
+{% endblock %}
+
+{% block button_class %}
+Текущий список слов можно посмотреть здесь.
+<a class="btn btn-outline-secondary" href="/words-list">Список слов</a>
+{% endblock %}
+
+{% block content %}
+<div class="container-sm px-5 py-5" id="term-form">
+    <form method = "post">
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" name = "word" placeholder="Слово">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" name = "translation" placeholder="Перевод">
+        </div>
+      </div>
+     <button type="submit" class="btn btn-primary" formaction="/send-word">Добавить слово</button>
+    </form>
+</div>
+{% endblock %}

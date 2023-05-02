@@ -1,0 +1,50 @@
+﻿{% extends "new_base.html" %}
+
+{% block header %}
+Изучение английского языка
+{% endblock %}
+
+{% block page_info %}
+Данный сайт посвящен изучению английского языка. <br/>
+На данном сайте вы можете найти перевод многих английских слов, а также материалы прошедших занятий.
+{% endblock %}
+
+{% block button_class %}
+<a class="btn btn-outline-secondary" href="/words-list">Список слов</a>
+{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center w-100 my-md-3 pl-md-3">
+      <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+        <div class="my-3 py-3">
+          <h2 class="display-5">Таблица с переводом слов</h2>
+          <p class="lead">Найдите перевод нужного вам слова в общей таблице</p>
+        </div>
+          <a class="btn btn-success" style = "width:80%; height:200px;" href="/words-list">Посмотреть перевод слов</a>
+      </div>
+      <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-3 p-3">
+          <h2 class="display-5">Материалы уроков</h2>
+          <p class="lead">Набор материалов с прошедших уроков</p>
+        </div>
+          <a class="btn btn-danger" style = "width:80%; height:200px;" href="/lesson-materials">Посмотреть материалы уроков</a>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center w-100 my-md-3 pl-md-3">
+      <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-3 p-3">
+          <h2 class="display-5">Добавление слова</h2>
+          <p class="lead">Не нашли перевода в таблице? Внесите его сами!</p>
+        </div>
+          <a class="btn btn-primary" style = "width:80%; height:200px;" href="/add-word">Внести слово в таблицу</a>
+      </div>
+      <div class="bg-primary mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+        <div class="my-3 py-3">
+          <h2 class="display-5">Добавление урока</h2>
+          <p class="lead">Добавьте информацию о прошедшем уроке в таблицу</p>
+        </div>
+          <a class="btn btn-warning" style = "width:80%; height:200px;" href="/add-lesson">Добавить информацию об уроке</a>
+      </div>
+    </div>
+{% endblock %}

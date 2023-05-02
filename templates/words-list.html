@@ -1,0 +1,51 @@
+﻿{% extends "new_base.html" %}
+
+{% block header %}
+Таблица слов с переводом
+{% endblock %}
+
+{% block page_info %}
+Далее приведена таблица слов на английском с переводом на русский язык. <br/>
+В случае, если вы знаете перевод слова которого в таблице нет, можно добавить слово с переводом в таблицу.\
+При ошибочном или неправильном занесении слова можно удалить его по кнопке снизу таблицы.
+{% endblock %}
+
+{% block button_class %}
+<a class="btn btn-success" href="/add-word">Добавить слово</a>
+{% endblock %}
+
+{% block content %}
+<div class="container px-4 py-5" id="terms-table">
+    <div class="table-responsive">
+        <table class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th scope="col" class="py-3">#</th>
+              <th scope="col" class="py-3">Слово</th>
+              <th scope="col" class="py-3">Перевод</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for cnt, term, definition in words %}
+            <tr>
+                <td class="py-3">{{ cnt }}</td>
+                <td class="py-3">{{ term }}</td>
+                <td class="py-3">{{ definition }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col text-center">
+      <form>
+          <button type="submit" class="btn btn-danger" formaction="/delete-word">Удалить последнее слово</button
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

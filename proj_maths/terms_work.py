@@ -1,25 +1,34 @@
-def get_terms_for_table():
-    terms = []
-    with open("./data/terms.csv", "r", encoding="utf-8") as f:
-        cnt = 1
-        for line in f.readlines()[1:]:
-            term, definition, source = line.split(";")
-            terms.append([cnt, term, definition])
-            cnt += 1
-    return terms
+from proj_maths.models import Translations, Lessons
 
+def get_all_words():
+    words = []
+    for item in Translations.objects.all():
+        words.append([item.word_id, item.word, item.translation])
+    return words
 
-def write_term(new_term, new_definition):
-    new_term_line = f"{new_term};{new_definition};user"
-    with open("./data/terms.csv", "r", encoding="utf-8") as f:
-        existing_terms = [l.strip("\n") for l in f.readlines()]
-        title = existing_terms[0]
-        old_terms = existing_terms[1:]
-    terms_sorted = old_terms + [new_term_line]
-    terms_sorted.sort()
-    new_terms = [title] + terms_sorted
-    with open("./data/terms.csv", "w", encoding="utf-8") as f:
-        f.write("\n".join(new_terms))
+def get_all_lessons():
+    lessons = []
+    for item in Lessons.objects.all():
+        lessons.append([item.lesson_id, item.date_lesson, item.theme, item.newwords])
+    return lessons
+
+def write_word(word, trans):
+    term = Translations(word=word, translation = trans)
+    term.save()
+
+def write_lesson(date, theme, words):
+    lesson = Lessons(date_lesson = date, theme = theme, newwords = words)
+    lesson.save()
+
+def delete_word():
+    #delword = Translations.objects.get(-1)
+    #delword.delete()
+    Translations.objects.order_by('-word_id')[0].delete()
+
+def delete_lesson():
+    #delword = Translations.objects.get(-1)
+    #delword.delete()
+    Lessons.objects.order_by('-lesson_id')[0].delete()
 
 
 def get_terms_stats():

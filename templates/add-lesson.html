@@ -1,0 +1,34 @@
+﻿{% extends "new_base.html" %}
+
+{% block header %}
+Добавление урока
+{% endblock %}
+
+{% block page_info %}
+В данной форме вы можете добавить материалы прошедшего урока.<br/>
+Заполните форму и нажмите на кнопку "Добавить урок", чтобы добавить информацию об уроке.
+{% endblock %}
+
+{% block button_class %}
+Текущий список уроков с информацией можно посмотреть здесь.
+<a class="btn btn-outline-secondary" href="/lesson-materials">Список слов</a>
+{% endblock %}
+
+{% block content %}
+<div class="container-sm px-5 py-5" id="term-form">
+    <form method = "post">
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" name = "date" placeholder="Дата урока">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" name = "theme" placeholder="Тема урока">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" name = "newwords" placeholder="Новые слова">
+        </div>
+      </div>
+     <button type="submit" class="btn btn-primary" formaction="/send-lesson">Добавить урок</button>
+    </form>
+</div>
+{% endblock %}
